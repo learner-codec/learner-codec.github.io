@@ -50,12 +50,13 @@ export default function Greeting() {
               </p>
               <SocialMedia />
               <div className="button-greeting-div">
-                <Button text="Contact me" href="#contact" />
+                <Button text="Contact me" href="/#contact" isHashLink={true} />
                 {greeting.resumeLink && (
                   <Button
                     text="See my resume"
                     newTab={true}
                     href={greeting.resumeLink}
+                    isHashLink={false}
                   />
                 )}
               </div>
