@@ -987,7 +987,7 @@ from the vectors we can clearely see that $B=(b_1,b_2)$ and $B' = (b'_1,b'_2)$ a
 lets consider a vector in canonical basis of $R^2$, $x=2e_1 + 3_e2$
 to project this vector into $R^2$ with a basis of B, we need to find the transformation matrix, we can follow Example 2.21 to do so. we find the transformation matrix $A\phi_B = \begin{bmatrix}1&-1 \\ 1&-2\end{bmatrix}$ using this we can find a represention of the vector x with basis B. we find that the coeffecient for x is $\begin{bmatrix}-1 \\ -4\end{bmatrix}$  
 We can do the same thing with $B'$ and find the coefficient to be $\begin{bmatrix}-1/4 \\ 5/2\end{bmatrix}$  
-![Figure](blogposts/resources/drawing_basis.png)
+![Figure](pages/blogposts/resources/drawing_basis.png)
 
 ### 2
 In the previous part we sort of gloss over the idea of representing a bssis in terms of another basis. Now lets go through the process.

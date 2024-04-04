@@ -3,6 +3,8 @@ import Headroom from "react-headroom";
 import "./Header.scss";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import StyleContext from "../../contexts/StyleContext";
+import {HashLink} from "react-router-hash-link";
+import { useLocation } from "react-router-dom";
 import {
   greeting,
   workExperiences,
@@ -23,7 +25,7 @@ function Header() {
   const viewBlog = blogSection.display;
   const viewTalks = talkSection.display;
   const viewPub = publicationInfo.display;
-
+  const location = useLocation();
   return (
     <Headroom>
       <header className={isDark ? "dark-menu header" : "header"}>
@@ -41,29 +43,29 @@ function Header() {
           <span className={isDark ? "navicon navicon-dark" : "navicon"}></span>
         </label>
         <ul className={isDark ? "dark-menu menu" : "menu"}>
-          {viewSkills && (
+          {location.pathname === "/" && viewSkills && (
             <li>
-              <a href="#skills">Skills</a>
+              <HashLink to="/#skills">Skills</HashLink>
             </li>
           )}
-          {viewPub && (
+          {location.pathname === "/" && viewPub && (
             <li>
-              <a href="#publications">Publications</a>
+              <HashLink to="#publications">Publications</HashLink>
             </li>
           )}
-          {viewExperience && (
+          {location.pathname === "/" && viewExperience && (
             <li>
-              <a href="#experience">Work Experiences</a>
+              <HashLink to="#experience">Work Experiences</HashLink>
             </li>
           )}
-          {viewOpenSource && (
+          {location.pathname === "/" && viewOpenSource && (
             <li>
-              <a href="#opensource">Open Source</a>
+              <HashLink to="#opensource">Open Source</HashLink>
             </li>
           )}
-          {viewAchievement && (
+          {location.pathname === "/" && viewAchievement && (
             <li>
-              <a href="#achievements">Achievements</a>
+              <HashLink to="#achievements">Achievements</HashLink>
             </li>
           )}
           {viewBlog && (
@@ -71,13 +73,13 @@ function Header() {
               <a href="#/blogs">Blogs</a>
             </li>
           )}
-          {viewTalks && (
+          {location.pathname === "/" && viewTalks && (
             <li>
-              <a href="#talks">Talks</a>
+              <HashLink to="#talks">Talks</HashLink>
             </li>
           )}
           <li>
-            <a href="#contact">Contact Me</a>
+            <HashLink to="#contact">Contact Me</HashLink>
           </li>
           <li>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
