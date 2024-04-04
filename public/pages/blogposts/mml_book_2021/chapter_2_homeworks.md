@@ -1092,3 +1092,40 @@ $$
 
 \tilde{A_{\phi}} = \left[\begin{matrix}0 & 2 \\ -10 & 3 \\ 12 & -4 \end{matrix}\right]
 $$
+
+### 6
+Let us consider the vector $x \isin \R^2$ whose coordinates in $B'$ are $[2,3]^T$. In other words, $x = 2b'_1 + 3b'_2$.
+
+#### a: Calculate the coordinates of x in B
+We need to use the transformation matrix $P_1$ which transforms any vector from B' to B.
+$$
+P_1 \left[\begin{array}{c} 2 \\ 3 \end{array}\right] = \left[
+\begin{array}{cc}4& 0  \\ 6 & -1 \end{array}  
+\right] \left[\begin{array}{c} 2 \\ 3 \end{array}\right] = \left[\begin{array}{c} 8 \\ 9 \end{array}\right]
+$$
+thus it is the coordinates of x in B.
+#### b. Based on that, compute the coordinates of $\phi(x)$ expressed in C.
+
+Here we can use the transformation matrix A that we obtained from previous steps(4) that transforms the coordinates from B to C.
+
+$$
+A_{\phi}\left[\begin{array}{c} 8 \\ 9 \end{array}\right] = \left[
+\begin{matrix}1 & -1 \\  0 & 1 \\2 & -1\end{matrix}
+\right] \left[\begin{array}{c} 8 \\ 9 \end{array}\right] = \left[\begin{array}{c} -1 \\ 9 \\ 7 \end{array}\right]
+$$
+
+#### c: Then, Write $\phi(x)$ in terms of $c'_1,c'_2,c'_3$.
+Note that we obtained the $\phi(x)$ from previous step.$\left[\begin{array}{c} -1 \\ 9 \\ 7 \end{array}\right]$.
+Currently it is represented in terms of C. But thanks to the matrix $P_2$ we can represent it in terms of the coordinates of $C'$.
+
+$$
+P_2 \left[\begin{array}{c} -1 \\ 9 \\ 7 \end{array}\right]= \left[\begin{matrix}1 & 0 & 1 \\ 2 & -1 & 0 \\ -1 & 2 & -1\end{matrix}\right] \left[\begin{array}{c} -1 \\ 9 \\ 7 \end{array}\right] = \left[\begin{array}{c} 6 \\ -11 \\ 12 \end{array}\right]
+$$
+Now we can express $\phi(x)$ in terms of C': $\phi(x) = 6c'_1-11c'_2+12c'_3$
+#### d: Use the representation of x in B' and the matrix A' to find this result directly.
+
+We already have the representation of x in B'. And the matrix A' projects the element of B' to C'. Now we can write the following:
+$$
+A'_{\phi} \left[\begin{array}{c} 2 \\ 3 \end{array}\right] = \left[\begin{matrix}0 & 2 \\ -10 & 3 \\ 12 & -4 \end{matrix}\right] \left[\begin{array}{c} 2 \\ 3 \end{array}\right] = \left[\begin{array}{c} 6 \\ -11 \\ 12 \end{array}\right]
+$$
+Similarly we can express $\phi(x)$ in terms of C': $\phi(x) = 6c'_1-11c'_2+12c'_3$
