@@ -1,0 +1,16 @@
+[
+    {
+        "title":"ViTs are Everywhere: A Comprehensive Study Showcasing Vision Transformers in Different Domain",
+        "journal":"International Conference on the Cognitive Computing and Complex Data (ICCD) 2023",
+        "paper":"https://arxiv.org/ftp/arxiv/papers/2310/2310.05664.pdf",
+        "abstract":"https://ieeexplore.ieee.org/document/10420683",
+        "code":""
+    },
+    {
+        "title":"DANet: Enhancing Small Object Detection through an Efficient Deformable Attention Network",
+        "journal":"International Conference on the Cognitive Computing and Complex Data (ICCD) 2023",
+        "paper":"https://arxiv.org/ftp/arxiv/papers/2310/2310.05768.pdf",
+        "abstract":"https://ieeexplore.ieee.org/document/10420622",
+        "code":""
+    }
+]

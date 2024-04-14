@@ -4,7 +4,7 @@ async function getProfileInfo(authorId) {
     try {
         const response = await axios.get(`https://api.semanticscholar.org/graph/v1/author/${authorId}/papers`, {
             params: {
-                fields: 'url,year,authors,title,publicationVenue,externalIds,publicationTypes',
+                fields: 'url,year,authors,title,publicationVenue,externalIds,publicationTypes,openAccessPdf,journal',
                 limit: 2
             }
         });

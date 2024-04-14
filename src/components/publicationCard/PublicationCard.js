@@ -4,7 +4,14 @@ import "./PublicationCard.scss";
 import StyleContext from "../../contexts/StyleContext";
 
 export default function PublicationCard({publication}) {
-
+  function openUrlInNewTab(url, name) {
+    if (!url) {
+      console.log(`URL for ${name} not found`);
+      return;
+    }
+    var win = window.open(url, "_blank");
+    win.focus();
+  }
   const {isDark} = useContext(StyleContext);
 
   return (
@@ -17,32 +24,50 @@ export default function PublicationCard({publication}) {
             <div className="education-text-details">
                 <p className={`${isDark ? "dark-mode" : ""} publication-text-duration`}
                     dangerouslySetInnerHTML={{
-                        __html: publication.authors.map(author => 
-                            author === "Abu Bakor Hayat Arnob" 
-                                ? `<b>${author}*</b>` 
-                                : author
+                        __html: publication.authors.map(authors => 
+                            authors === "Abu Bakor Hayat Arnob" 
+                                ? `<strong>${authors}</strong>` 
+                                : authors
                         ).join(', ')
                     }}
                 />
-                <p
-                    className={`${isDark ? "dark-mode" : ""} publication-text-duration`}
-                    >
-                    {publication.arxivId ? ` (arXiv ID: ${publication.arxivId})` : ''}
-                </p>
+
                 <p
                     className={`${isDark ? "dark-mode" : ""} publication-text-duration`}
                     >
                     {publication.doi ? ` (DOI: ${publication.doi})` : ''}
                 </p>
-
-            
               <p
                 className={`${
                   isDark ? "dark-mode" : ""
                 } publication-text-duration`}
               >
-                {publication.year}
+                {`${publication.journal} year: ${publication.year}`}
               </p>
+              <div className="publication-card-footer">
+                {publication.footerLink.map((v, i) => {
+                    if (v.name === 'code' && v.url === '') {
+                      return null;
+                    }
+                    else if (v.name === "paper" && v.url === ''){
+                      return null;
+                    }
+                    else if (v.name === "abstract" && v.url === ''){
+                      return null;
+                    }
+                    return (
+                      <span
+                        key={i}
+                        className={
+                          isDark ? "publication-tag" : "publication-tag"
+                        }
+                        onClick={() => openUrlInNewTab(v.url, v.name)}
+                      >
+                        {v.name}
+                      </span>
+                    );
+                  })}
+              </div>
             </div>
           </div>
         </div>

@@ -4,7 +4,6 @@
 
 import emoji from "react-easy-emoji";
 import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
-import {getProfileInfo} from "./screpeScholar"
 // Splash Screen
 
 const splashScreen = {
@@ -22,13 +21,12 @@ const illustration = {
 const greeting = {
   username: "Abu Bakor Hayat Arnob",
   title: "Hi There, I am Arnob",
-  subTitle: emoji(
-    "An AI researcher. Over the years I have worked on robotics 🤖, Machine-learning UI, Machine Learning and Artificial Intelligence research and application that has an impact on our life. Currently my research focuses on self-supervision, zero/few shot learning and foundation models. I also work with llms."
-  ),
-  resumeLink:
-    "#", // Set to empty to hide the button
+  subTitle: `I am doing my masters in Artificial Intelligence at NUIST under the supervision of <a href="https://aim-nuist.github.io/team.html" target="_blank">Prof. Jun Xu</a> and <a href="https://www.researchgate.net/profile/Xiangxue-Wang" target="_blank">Xiangxue Wang</a>. I have done my bachelor in Software Engineering from HYIT under the supervision of <a href="https://amir.mokhtarzadeh.com/" target="_blank">Prof. Amir Mokhtarzadeh</a>. During my bachelor I have worked on robotics, Machine-learning UI, Machine Learning and Artificial Intelligence research and application that has an impact on our life. In my masters I am working on supervision using limited or no annotation, foundational model, multimodal knowledge distillation and natural language processing. Currently my research focuses on self-supervision, zero/few shot learning and foundation models.`,
+  resumeLink: "#", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
 };
+
+
 
 // Social Media Links
 
@@ -112,58 +110,108 @@ https://fontawesome.com/icons?d=gallery */
 };
 
 
-let publicationInfo;
+// let publicationInfo;
 
-async function scrape() {
-  publicationInfo = await getProfileInfo('2257000252');
-  publicationInfo.display = true; 
-  localStorage.setItem('publicationInfo', JSON.stringify(publicationInfo));
-  localStorage.setItem('lastUpdated', JSON.stringify(new Date())); // Save the date of update
-}
+// async function scrape() {
+//   publicationInfo = await getProfileInfo('2257000252');
+//   publicationInfo.display = true; 
+//   localStorage.setItem('publicationInfo', JSON.stringify(publicationInfo));
+//   localStorage.setItem('lastUpdated', JSON.stringify(new Date())); // Save the date of update
+// }
 
-async function startServer() {
-  await scrape();
-  // Rest of your server start code here
-}
+// async function startServer() {
+//   await scrape();
+//   // Rest of your server start code here
+// }
 
-// Check if data exists in local storage
-let storedPublicationInfo = JSON.parse(localStorage.getItem('publicationInfo'));
-let lastUpdated = new Date(JSON.parse(localStorage.getItem('lastUpdated')));
+// // Check if data exists in local storage
+// let storedPublicationInfo = JSON.parse(localStorage.getItem('publicationInfo'));
+// let lastUpdated = new Date(JSON.parse(localStorage.getItem('lastUpdated')));
 
-if (storedPublicationInfo) {
-  // If data is older than a week, update it
-  if ((new Date() - lastUpdated) > (24 * 60 * 60 * 1000)) {
-    startServer();
+// if (storedPublicationInfo) {
+//   // If data is older than a week, update it
+//   if ((new Date() - lastUpdated) > (24 * 60 * 60 * 1000)) {
+//     startServer();
 
-  }
-} else {
-  // If no data in local storage, fetch it
-  startServer();
-}
+//   }
+// } else {
+//   // If no data in local storage, fetch it
+//   startServer();
+// }
 
-// Then set the interval for a week
-setInterval(startServer,24 * 60 * 60 * 1000);
+// // Then set the interval for a week
+// setInterval(startServer,24 * 60 * 60 * 1000);
 
-// To get data from local storage
-publicationInfo = JSON.parse(localStorage.getItem('publicationInfo'));
-console.log("local storage", publicationInfo)
+// // To get data from local storage
+// publicationInfo = JSON.parse(localStorage.getItem('publicationInfo'));
+// console.log("local storage", publicationInfo)
 
 // Publication Info
-// const publicationInfo = {
-//   display: true, // Set false to hide this section, defaults to true
-//   publications: [
-//     {
-//       "title": "publication title",
-//       "abstract":"for abstract",
-//       "year":"2023"
-//     },
-//     {
-//       "title": "publication title2",
-//       "abstract":"for abstract2",
-//       "year":"20232"
-//     },
-//   ]
-// };
+const publicationInfo = {
+  display: true, // Set false to hide this section, defaults to true
+  publications: [
+      {
+        "title":"(Accepted)PATHOLOGICAL PRIMITIVE SEGMENTATION BASED ON VISUAL FOUNDATION MODEL WITH ZERO-SHOT MASK GENERATION",
+        "authors": ["Abu Bakor Hayat Arnob","Xiangxue Wang","Yiping Jiao","Xiao Gan","Wenlong Ming","Jun Xu"],
+        "journal":"21st IEEE International Symposium on Biomedical Imaging",
+        "year":2024,
+        "footerLink": [
+          {
+            "name": "paper",
+            "url": ""
+          },
+          {
+            "name": "abstract",
+            "url": ""
+          },
+          {
+            "name": "code",
+            "url":"https://github.com/learner-codec/autoprom_sam"
+          }
+        ]
+    },
+    {
+      "title":"ViTs are Everywhere: A Comprehensive Study Showcasing Vision Transformers in Different Domain",
+      "authors": ["Abu Bakor Hayat Arnob","Md Sohag Mia","Abdu Naim","Abdullah Al Bary Voban","Md Shariful Islam"],
+      "journal":"International Conference on the Cognitive Computing and Complex Data (ICCD)",
+      "year":2023,
+      "footerLink": [
+        {
+          "name": "paper",
+          "url": "https://arxiv.org/ftp/arxiv/papers/2310/2310.05664.pdf"
+        },
+        {
+          "name": "abstract",
+          "url": "https://ieeexplore.ieee.org/document/10420683"
+        },
+        {
+          "name": "code",
+          "url":""
+        }
+      ]
+  },
+  {
+      "title":"DANet: Enhancing Small Object Detection through an Efficient Deformable Attention Network",
+      "authors": ["Md Sohag Mia","Abdullah Al Bary Voban","Abu Bakor Hayat Arnob","Abdu Naim","Md Kawsar Ahmed","Md Shariful Islam"],
+      "journal":"International Conference on the Cognitive Computing and Complex Data (ICCD)",
+      "year": 2023,
+      "footerLink": [
+        {
+          "name": "paper",
+          "url": "https://arxiv.org/ftp/arxiv/papers/2310/2310.05768.pdf"
+        },
+        {
+          "name": "abstract",
+          "url": "https://ieeexplore.ieee.org/document/10420622"
+        },
+        {
+          "name": "code",
+          "url":""
+        }
+      ]
+  }
+  ]
+};
 
 
 // Education Section
@@ -385,7 +433,7 @@ const contactInfo = {
 
 const twitterDetails = {
   userName: "ArnobSatc", //Replace "twitter" with your twitter username without @
-  display: true // Set true to display this section, defaults to false
+  display: false // Set true to display this section, defaults to false
 };
 
 const isHireable = true; // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer

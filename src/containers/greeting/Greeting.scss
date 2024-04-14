@@ -45,8 +45,9 @@
   line-height: 40px;
 }
 
-.greeting-image-div > img {
-  max-width: 100%;
+.greeting-image-div {
+  margin-top: 25rem;
+  max-width: 40%;
   height: auto;
 }
 
@@ -105,6 +106,10 @@
   .greeting-text-p {
     font-size: 20px;
   }
+  .greeting-image-div{
+    display: none;
+    order: 2;
+  }
 }
 @media (max-width: 768px) {
   .button-greeting-div {
@@ -125,26 +130,18 @@
   .greeting-image-div {
     height: 256px;
   }
+  .greeting-image-div{
+    display: none;
+    order: 2;
+  }
 }
-
-/* Responsive design for smaller screens */
-// @media (max-width: 768px) {
-//   .profile-image {
-//     width: 2.5rem;
-//     height: 2.5rem;
-//   }
-// }
-
-// @media (max-width: 320px) {
-//   .profile-image {
-//     width: 2rem;
-//     height: 2rem;
-//   }
-// }
-
 
 @media (max-width: 320px) {
   .main {
     width: auto;
+  }
+  .greeting-image-div{
+    display: none;
+    order: 2;
   }
 }
