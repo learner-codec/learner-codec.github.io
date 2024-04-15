@@ -158,7 +158,7 @@ const publicationInfo = {
         "footerLink": [
           {
             "name": "paper",
-            "url": ""
+            "url": "https://arxiv.org/pdf/2404.08584.pdf"
           },
           {
             "name": "abstract",
