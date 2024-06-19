@@ -6,12 +6,16 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { StyleProvider } from '../../contexts/StyleContext';
 import blogData from './BLOGS/info.json';
 import 'katex/dist/katex.min.css';
-import Markdown from 'react-markdown'
-import rehypeKatex from 'rehype-katex'
+import Markdown from 'react-markdown';
+import rehypeKatex from 'rehype-katex';
 import Profile from '../../containers/profile/Profile';
-import remarkMath from 'remark-math'
-import 'katex/dist/katex.min.css' 
+import remarkMath from 'remark-math';
+import 'katex/dist/katex.min.css';
 import './PostView.scss';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import remarkToc from 'remark-toc';
+
 class BlogPost extends Component {
   constructor(props) {
     super(props);
@@ -37,10 +41,11 @@ class BlogPost extends Component {
     const { markdown } = this.state;
     const { filename } = this.props;
     const post = blogData.find((p) => p.filename === `${filename}.md`);
-
+  
     if (!post) {
       return <div>Loading...</div>;
     }
+  
     return (
       <div className={this.props.isDark ? 'dark-mode' : null}>
         <StyleProvider value={{ isDark: this.props.isDark, changeTheme: this.props.changeTheme }}>
@@ -51,10 +56,33 @@ class BlogPost extends Component {
               <p>
                 Published on {post.month}/{post.day}/{post.year} at {post.hour}:{post.minute}
               </p>
-              <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                    {markdown}
+              {markdown && (
+                <Markdown
+                remarkPlugins={[remarkMath, [remarkToc, { maxDepth: 1 }]]}
+                  rehypePlugins={[rehypeKatex]}
+                  components={{
+                    code({ node, inline, className, children, ...props }) {
+                      const match = /language-(\w+)/.exec(className || '');
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          style={atomDark}
+                          language={match[1]}
+                          PreTag="div"
+                          {...props}
+                        >
+                          {String(children).replace(/\n$/, '')}
+                        </SyntaxHighlighter>
+                      ) : (
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}
+                >
+                  {markdown}
                 </Markdown>
-               
+              )}
             </div>
           </div>
           <Profile />
